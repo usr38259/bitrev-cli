@@ -46,10 +46,10 @@ int _CRTAPI1 main (int argc, const char* argv [])
 	for (i = 0; i < 256; i++)
 		btable [i] = i << 7 | i << 5 & 0x40 | i << 3 & 0x20 | i << 1 & 0x10 |
 			i >> 1 & 0x08 | i >> 3 & 0x04 | i >> 5 & 0x02 | i >> 7 & 0x01;
-
+	fname = in_fname;
 	fin = fopen (in_fname, "rb");
 	if (fin == NULL) {
-foerr:		printf ("File '%s' open error\n", in_fname);
+foerr:		printf ("File '%s' open error\n", fname);
 		goto ioerr;
 	}
 	flen = file_length (fin);
