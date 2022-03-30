@@ -39,7 +39,8 @@ int _CRTAPI1 main (int argc, const char* argv [])
 		else if (out_fname == NULL) out_fname = pa;
 		else { f_e = 1; break; }
 	}
-	if (f_e || out_fname == NULL) { puts ("Command line error"); usage (); return 1; }
+	if (f_e || out_fname == NULL && in_fname != NULL)
+		{ puts ("Command line error"); usage (); return 1; }
 	if (in_fname == NULL) {
 		print_usage (); return 0;
 	}
