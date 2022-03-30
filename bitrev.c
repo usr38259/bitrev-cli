@@ -43,13 +43,13 @@ int _CRTAPI1 main (int argc, const char* argv [])
 	if (in_fname == NULL) {
 		print_usage (); return 0;
 	}
-	for (i = 0; i < 256; i++) {
+	for (i = 0; i < 256; i++)
 		btable [i] = i << 7 | i << 5 & 0x40 | i << 3 & 0x20 | i << 1 & 0x10 |
 			i >> 1 & 0x08 | i >> 3 & 0x04 | i >> 5 & 0x02 | i >> 7 & 0x01;
-	}
+
 	fin = fopen (in_fname, "rb");
 	if (fin == NULL) {
-		printf ("File '%s' open error\n", in_fname);
+foerr:		printf ("File '%s' open error\n", in_fname);
 		goto ioerr;
 	}
 	flen = file_length (fin);
@@ -63,7 +63,7 @@ ioerr:		perror (NULL); cr = 1;
 	if (flen == 0) { puts ("File is empty"); cr = 0; goto err; }
 	fout = fopen (out_fname, "wb");
 	fname = out_fname;
-	if (fout == NULL) goto iomsg;
+	if (fout == NULL) goto foerr;
 	for (i = 0; i < flen; i++) {
 		c = fgetc (fin);
 		if (c <= EOF) if (ferror (fin))
